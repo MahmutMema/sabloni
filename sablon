@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabloni studenata</title>
+</head>
+<body>
+ <script>  
+
+function Student(name,address,phone,course)
+
+ {
+this.name = name;
+this.address = address;
+this.phone = phone;
+this.course = course;
+
+
+}
+
+Student.prototype.getName = function () {
+ return this.name + " " ;
+
+};
+Student.prototype.getInfo = function () {
+return "Name: " + this.name + "/n" +
+       "Address:" + this.address + "/n" +
+     "Phone:"  + this.phone + "/n" +
+     "Course:"  + this.course 
+} ;
+let studentmedicina = new Student ("Sara Memic", "ulica kraljaPetra 1",+38163222212 ,"Medicina");
+let studentmedicinaName= studentmedicina.getName();
+let studentmedicinaInfo = studentmedicina.getInfo ();
+
+ document.body.innerHTML += studentmedicinaName;
+document.body.innerHTML += studentmedicinaInfo;
+
+function Studentinformatika(name,address,phone,course ) {
+    Student.call(this, name,address,phone,course);
+
+
+}
+Studentinformatika.prototype = Object.create(Student.prototype);
+Studentinformatika.prototype.constructor = Studentinformatika ;
+
+Studentinformatika.prototype.getInfo = function() {
+
+return Student.prototype.getInfo.call(this)  
+  
+
+
+}
+
+ let studentinformatika1 = new Studentinformatika("Asja Memic", "Balkanska 2 Beograd", +381643333  ,"Informatika");
+ 
+  let studentinformatika1Name = studentinformatika1.getName();
+  let studentinformatika1Info = studentinformatika1.getInfo();
+
+document.body.innerHTML += studentinformatika1Name;
+document.body.innerHTML += studentinformatika1Info;
+
+   function Studentbiologija(name,address,phone,course) {
+  Student.call(this, name,address,phone,course);
+ 
+
+ }
+ Studentbiologija.prototype = Object.create(Student.prototype);
+ Studentbiologija.prototype.constructor = Studentbiologija;
+
+ Studentbiologija.prototype.getInfo =function () {
+return Student.prototype.getInfo.call(this) 
+
+
+
+}
+let studentbioligija1= new Studentbiologija("Ivan Lukic", "Novosadska 21 Beograd",  +3816317549,"Biologija");
+
+let studentbioligija1Name = studentbioligija1.getName();
+let studentbioligija1Info = studentbioligija1.getInfo();
+
+document.body.innerHTML += studentbiologija1Name;
+document.body.innerHTML += studentbiologija1Info;
+
+
+
+
+
+
+
+
+</script>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+
+
+
+
+
+
+
+</body>
+</html>
